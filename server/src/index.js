@@ -1,11 +1,20 @@
-const express = require('express');
+import  express from 'express';
+import  React from 'react';
+import {renderToString} from  'react-dom/server';
+import  Home from './client/component/Home';
+
 const app = express();
-const React = require('react');
-const renderToString = require('react-dom/server').renderToString;
-const Home = require('./client/component/Home').default;
+app.use(express.static('public'));
 app.get('/',(req,res)=>{
 const content = renderToString(<Home/>);
-return res.send(content);
+const html = `<html>
+<head></head>
+<body>
+<div id = "root">${content}</div>
+<script src = "bundle.js"></script>
+</body>
+</html>`
+return res.send(html);
 });
 app.listen(3005,()=>{
 console.log('Listening on port 3005');
