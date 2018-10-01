@@ -7,7 +7,8 @@ module.exports={
             exclude: /node_modules/,
             options: {
                presets: [
-                    'react',
+                'react',
+                "es2015",
                     'stage-0',
                     ['env', {
                         targets: {

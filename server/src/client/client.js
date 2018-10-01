@@ -1,5 +1,23 @@
 // Startup code for client side application.
+import 'babel-polyfill';
 import React from 'react';
 import ReactDom from 'react-dom';
-import Home from './component/Home';
-ReactDom.hydrate(<Home/>,document.querySelector("#root"));
+import {BrowserRouter} from 'react-router-dom';
+import Routes from './Routes';
+import {createStore,applyMiddleware, combineReducers} from 'redux';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+import {renderRoutes} from 'react-router-config';
+
+import reducers from './reducers';
+const store = createStore(reducers,{},applyMiddleware(thunk))
+ReactDom.hydrate(
+    <Provider store={store}>
+    <BrowserRouter>
+    <div>
+           {renderRoutes(Routes)}
+           </div>
+    </BrowserRouter>
+    </Provider>
+    ,
+document.querySelector("#root"));
