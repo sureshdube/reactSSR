@@ -3,4 +3,6 @@ import React from 'react';
 const Home = ()=>{
     return <div>This is client side</div>
 }
-export default Home;
+export default{
+    component:Home
+} 
