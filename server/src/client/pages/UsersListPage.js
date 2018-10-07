@@ -8,7 +8,7 @@ class UsersList extends Component{
     }
     componentDidMount(){
         console.log(123);
-        // this.props.fetchUsers();
+        this.props.fetchUsers();
     }
     // renderUsers = ()=>{
     //     return this.props.users.map(user=>{
@@ -19,7 +19,7 @@ class UsersList extends Component{
         console.log("this.props.users",this.props.users);
         return (
             <div>
-                UsersList : 
+                <h3>List Of Users</h3>
                 <ul>
                 {this.props.users.map(user=>{
             return <li key={user.id}>{user.name}</li>
